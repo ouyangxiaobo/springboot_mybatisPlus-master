@@ -7,4 +7,4 @@ spingboot整合mybatisPlus
 -------------------------------
 二、启动项目教程
   导入数据库，修改配置文件得相关参数，如数据库名，账户，密码
-  启动项目，在浏览器输入localost:8082/swagger-ui.html,即可进行api访问
+  启动项目，在浏览器输入localhost:8082/swagger-ui.html,即可进行api访问
