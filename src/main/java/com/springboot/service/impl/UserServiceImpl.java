@@ -1,5 +1,6 @@
 package com.springboot.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.springboot.entity.User;
@@ -43,15 +44,22 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public IPage<User> queryAllUsersPage(Integer pageNum,Integer pageSize) {
+    public IPage<User> queryAllUsersPage(Integer pageNum,Integer pageSize,String username) {
         if(pageNum==null || pageNum==0){
             pageNum=1;
         }
         if(pageSize==null || pageSize==0){
             pageSize=2;
         }
+
+        QueryWrapper<User> queryWrapper=new QueryWrapper<>();
+        if(username !=null ){
+            queryWrapper.like("username", username);
+        }
+
+
         Page<User> userPage=new Page<User>(pageNum,pageSize);
-        IPage<User> selectPage =userMapper.selectPage(userPage,null);
+        IPage<User> selectPage =userMapper.selectPage(userPage,queryWrapper);
         log.info("总条数="+userPage.getTotal());
         log.info("当前页="+userPage.getCurrent());
         log.info("总页码="+userPage.getPages());

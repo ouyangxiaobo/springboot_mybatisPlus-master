@@ -19,7 +19,7 @@ public interface UserService {
     List<User> queryAllUsersList();
 
     /*测试查询所有用户并且分页查询*/
-    IPage<User> queryAllUsersPage(Integer pageNum, Integer pageSize);
+    IPage<User> queryAllUsersPage(Integer pageNum, Integer pageSize,String username);
 
     /*删除一个用户*/
     Map<Integer,Object> deleteUserById(Integer userId);

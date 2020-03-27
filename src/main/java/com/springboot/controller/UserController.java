@@ -81,12 +81,13 @@ public class UserController {
 
     @ApiOperation(value = "用户分页", notes = "用户分页")
     @PostMapping("/listAllUsersPage")
-    public IPage<User> listAllUsersPage(Integer pageNum, Integer pageSize) {
+    public IPage<User> listAllUsersPage(@RequestParam Integer pageNum,@RequestParam Integer pageSize,@RequestParam String username) {
         try {
             log.info("用户分页----pageNum=", pageNum);
             log.info("用户分页----pageNum=", pageSize);
+            log.info("用户分页----username=", username);
 
-            IPage<User> userIPage = userService.queryAllUsersPage(pageNum, pageSize);
+            IPage<User> userIPage = userService.queryAllUsersPage(pageNum, pageSize,username);
 
             return userIPage;
         } catch (Exception e) {
